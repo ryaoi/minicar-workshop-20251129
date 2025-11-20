@@ -5,8 +5,8 @@ from time import sleep
 # PiCar-Xを使えるようにする
 px = Picarx()
 
-# 無限に繰り返す
-while True:
+# 2回繰り返す
+for i in range(2):
     # 前に進む
     px.forward(10)
     
@@ -18,3 +18,6 @@ while True:
     
     # 0.5秒待つ
     sleep(0.5)
+
+# 最後に完全に停止
+px.stop()
