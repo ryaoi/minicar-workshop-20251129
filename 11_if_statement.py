@@ -9,7 +9,7 @@ px = Picarx()
 command = "forward"
 
 # もしcommandが"forward"なら、前進する
-if command == "foward":
+if command == "forward":
     px.forward(50)
     sleep(1)
     px.stop()
