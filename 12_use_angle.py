@@ -21,7 +21,15 @@ try:
         # 画面に結果を表示
         print("距離:", distance, "cm")
         
-        if distance <= DangerDistance:
+        # 距離が0以下 → 測定できないほど遠い！前進
+        if distance <= 0:
+            print("→ 🔵 めちゃくちゃ遠い！前進します")
+            px.set_dir_servo_angle(0)
+            px.forward(POWER)
+            sleep(1)
+            px.stop()
+        
+        elif distance <= DangerDistance:
             print("→ 🔴 危険！後退します")
             px.set_dir_servo_angle(-TurnAngle)  # 変数を使う（左に）
             px.backward(POWER)

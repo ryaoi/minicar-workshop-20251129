@@ -42,8 +42,14 @@ try:
         # 画面に結果を表示
         print("距離:", distance, "cm")
         
+        # 距離が0以下 → 測定できないほど遠い！前進
+        if distance <= 0:
+            print("→ 🔵 めちゃくちゃ遠い！前進します")
+            px.set_dir_servo_angle(0)
+            px.forward(POWER)
+        
         # 安全 → まっすぐ前進
-        if distance >= SafeDistance:
+        elif distance >= SafeDistance:
             print("→ 🟢 安全！前進します")
             px.set_dir_servo_angle(0)
             px.forward(POWER)

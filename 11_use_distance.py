@@ -22,8 +22,15 @@ try:
         # 画面に結果を表示
         print("距離:", distance, "cm")
         
+        # 距離が0以下 → 測定できないほど遠い！前進
+        if distance <= 0:
+            print("→ 🔵 めちゃくちゃ遠い！前進します")
+            px.forward(POWER)
+            sleep(1)
+            px.stop()
+        
         # 危険な距離なら後退
-        if distance <= DangerDistance:  # 変数を使う
+        elif distance <= DangerDistance:  # 変数を使う
             print("→ 🔴 危険！後退します")
             px.backward(POWER)
             sleep(0.5)

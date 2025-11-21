@@ -14,6 +14,13 @@ distance = round(distance, 2)
 # 画面に結果を表示
 print("距離:", distance, "cm")
 
+# 距離が0以下 → 測定できないほど遠い！前進
+if distance <= 0:
+    print("→ めちゃくちゃ遠い！前進します")
+    px.forward(50)
+    sleep(1)
+    px.stop()
+
 # もし距離が40cm以内なら、ストップ
 if distance <= 40:
     print("→ 近い！ストップします")
