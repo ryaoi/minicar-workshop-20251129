@@ -5,15 +5,13 @@ from time import sleep
 # PiCar-Xを使えるようにする
 px = Picarx()
 
-# タイヤを左に向ける
-# マイナスの値（-30）で左に曲がる
+# タイヤを左に向ける（マイナスの値で左）
 px.set_dir_servo_angle(-30)
 
 # 前に進む命令
 px.forward(50)
 
 # 1秒待つ
-# この間、PiCar-Xは左に曲がりながら前進し続ける
 sleep(1)
 
 # 止まる命令
