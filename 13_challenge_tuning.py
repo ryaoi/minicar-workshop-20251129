@@ -31,6 +31,9 @@ DangerTime = 0.5
 # PiCar-Xを使えるようにする
 px = Picarx()
 
+# 1秒待つ（超音波センサーが安定するため）
+sleep(1)
+
 try:
     while True:
         # 超音波センサーで目の前の距離を測る

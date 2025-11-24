@@ -3,6 +3,8 @@ from time import sleep
 
 px = Picarx()
 
+sleep(1)
+
 POWER = 50
 SafeDistance = 40
 DangerDistance = 20

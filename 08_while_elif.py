@@ -5,6 +5,9 @@ from time import sleep
 # PiCar-Xを使えるようにする
 px = Picarx()
 
+# 1秒待つ（超音波センサーが安定するため）
+sleep(1)
+
 # 繰り返し実行する
 # 止めたいときは Ctrl + C を押す
 while True:

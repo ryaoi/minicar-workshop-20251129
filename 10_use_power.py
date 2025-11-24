@@ -4,6 +4,9 @@ from time import sleep
 # PiCar-Xを使えるようにする
 px = Picarx()
 
+# 1秒待つ（超音波センサーが安定するため）
+sleep(1)
+
 # スピードを変数にする
 POWER = 50
 
