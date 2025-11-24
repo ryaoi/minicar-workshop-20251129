@@ -33,10 +33,11 @@ if distance <= 40:
     px.stop()
     px.set_dir_servo_angle(0)
 
-# もし距離が40cmより遠いなら、前進
-if distance > 40:
+# それ以外（40cmより遠い）なら、前進
+else:
     print("→ 遠い！前進します")
     px.forward(50)
     sleep(1)
     px.stop()
+
 

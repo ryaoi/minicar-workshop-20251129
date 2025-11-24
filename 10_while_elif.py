@@ -20,9 +20,9 @@ while True:
     # 画面に結果を表示
     print("距離:", distance, "cm")
     
-    # 距離が0以下 → 測定できないほど遠い！前進
+    # 距離が0以下 → 測定できないほど遠い
     if distance <= 0:
-        print("→ 🔵 めちゃくちゃ遠い！前進します")
+        print("→ 測定できないほど遠い。前進します")
         px.forward(50)
         sleep(1)
         px.stop()

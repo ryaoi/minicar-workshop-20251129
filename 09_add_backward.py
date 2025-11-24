@@ -24,8 +24,10 @@ if distance <= 0:
     sleep(1)
     px.stop()
 
-# もし距離が40cm以内なら、右に曲がる
-if distance <= 40:
+# そうでなく、もし20cm以内なら、後退するためのコードをここに書いてください。
+
+# そうでなく、もし40cm以内なら、右に曲がる
+elif distance <= 40:
     print("→ 注意！右に曲がります")
     px.set_dir_servo_angle(30)
     px.forward(50)
@@ -33,10 +35,11 @@ if distance <= 40:
     px.stop()
     px.set_dir_servo_angle(0)
 
-# もし距離が40cmより遠いなら、前進
-if distance > 40:
+# それ以外（40cmより遠い）なら、前進
+else:
     print("→ 遠い！前進します")
     px.forward(50)
     sleep(1)
     px.stop()
+
 
