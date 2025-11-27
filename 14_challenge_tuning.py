@@ -9,16 +9,16 @@ from time import sleep
 Power = 50
 
 # 安全な距離（この距離以上なら安全）
-SafeDistance = 40
+SafeDistance = 50
 
 # 危険な距離（この距離未満は危険）
-DangerDistance = 20
+DangerDistance = 30
 
-# 左に曲がる角度（-30〜0で設定可能）
-TurnLeftAngle = -30
+# 右に曲がる角度（0〜30で設定可能）
+TurnRightAngle = 30
 
 # 注意時の動作時間（秒）
-CautionTime = 0.1
+CautionTime = 1.7
 
 # 危険時の動作時間（秒）
 DangerTime = 0.5
@@ -49,10 +49,10 @@ try:
             sleep(DangerTime)
             px.stop()
 
-        # そうでなく、もし40cm以内なら、左に曲がる
+        # そうでなく、もし40cm以内なら、右に曲がる
         elif distance > DangerDistance and distance <= SafeDistance:
-            print("🟡 注意！左に曲がります")
-            px.set_dir_servo_angle(TurnLeftAngle)
+            print("🟡 注意！右に曲がります")
+            px.set_dir_servo_angle(TurnRightAngle)
             px.forward(Power)
             sleep(CautionTime)
             px.stop()

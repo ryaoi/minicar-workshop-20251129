@@ -30,10 +30,10 @@ try:
             sleep(0.5)
             px.stop()
 
-        # そうでなく、もし40cm以内なら、左に曲がる
+        # そうでなく、もし40cm以内なら、右に曲がる
         elif distance > 20 and distance <= 40:
-            print("🟡 注意！左に曲がります")
-            px.set_dir_servo_angle(-30)
+            print("🟡 注意！右に曲がります")
+            px.set_dir_servo_angle(30)
             px.forward(Power)
             sleep(0.5)
             px.stop()

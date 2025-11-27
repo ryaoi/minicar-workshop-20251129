@@ -9,8 +9,8 @@ Power = 50
 SafeDistance = 40
 DangerDistance = 20
 
-# 左に曲がる角度を変数にする
-TurnLeftAngle = -30  # タイヤを曲げる角度
+# 右に曲がる角度を変数にする
+TurnRightAngle = 30  # タイヤを曲げる角度
 
 try:
     while True:
@@ -30,10 +30,10 @@ try:
             sleep(0.5)
             px.stop()
 
-        # そうでなく、もし40cm以内なら、左に曲がる
+        # そうでなく、もし40cm以内なら、右に曲がる
         elif distance > DangerDistance and distance <= SafeDistance:
-            print("🟡 注意！左に曲がります")
-            px.set_dir_servo_angle(TurnLeftAngle)
+            print("🟡 注意！右に曲がります")
+            px.set_dir_servo_angle(TurnRightAngle)
             px.forward(Power)
             sleep(0.5)
             px.stop()
