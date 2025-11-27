@@ -32,7 +32,7 @@ while True:
         print("🟡 注意！右に曲がります")
         px.set_dir_servo_angle(30)
         px.forward(50)
-        sleep(0.5)
+        sleep(1.7)
         px.stop()
         px.set_dir_servo_angle(0)
 
