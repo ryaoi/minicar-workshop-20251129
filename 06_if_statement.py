@@ -17,26 +17,10 @@ distance = round(distance, 2)
 # 画面に結果を表示
 print("距離:", distance, "cm")
 
-# もし距離が0以下なら、測定できないほど遠い
-if distance <= 0:
-    print("→ 測定できないほど遠い。前進します")
-    px.forward(50)
-    sleep(1)
-    px.stop()
-
-# もし距離が40cm以内なら、右に曲がる
-if distance <= 40:
-    print("→ 注意！右に曲がります")
-    px.set_dir_servo_angle(30)
-    px.forward(50)
+# もし距離が0より大きく、かつ20cm以内なら、後退
+if distance > 0 and distance <= 20:
+    print("🔴 危険！後退します")
+    px.backward(50)
     sleep(0.5)
-    px.stop()
-    px.set_dir_servo_angle(0)
-
-# もし距離が40cmより遠いなら、前進
-if distance > 40:
-    print("→ 遠い！前進します")
-    px.forward(50)
-    sleep(1)
     px.stop()
 

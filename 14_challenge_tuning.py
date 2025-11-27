@@ -6,16 +6,13 @@ from time import sleep
 # ========================================
 
 # スピード（10〜100で設定可能）
-POWER = 50
+Power = 50
 
 # 安全な距離（この距離以上なら安全）
 SafeDistance = 40
 
 # 危険な距離（この距離未満は危険）
 DangerDistance = 20
-
-# 右に曲がる角度（0〜30で設定可能）
-TurnRightAngle = 30
 
 # 左に曲がる角度（-30〜0で設定可能）
 TurnLeftAngle = -30
@@ -45,31 +42,28 @@ try:
         # 画面に結果を表示
         print("距離:", distance, "cm")
         
-        # 距離が0以下 → 測定できないほど遠い！前進
-        if distance <= 0:
-            print("→ 🔵 めちゃくちゃ遠い！前進します")
-            px.set_dir_servo_angle(0)
-            px.forward(POWER)
-        
-        # 安全 → まっすぐ前進
-        elif distance >= SafeDistance:
-            print("→ 🟢 安全！前進します")
-            px.set_dir_servo_angle(0)
-            px.forward(POWER)
-        
-        # 注意 → 右に曲がりながら前進
-        elif distance >= DangerDistance:
-            print("→ 🟡 注意！右に曲がります")
-            px.set_dir_servo_angle(TurnRightAngle)
-            px.forward(POWER)
-            sleep(CautionTime)
-        
-        # 危険！ → 左に曲がりながら後退
-        else:
-            print("→ 🔴 危険！後退します")
-            px.set_dir_servo_angle(TurnLeftAngle)
-            px.backward(POWER)
+        # もし距離が0より大きく、かつ20cm以内なら、後退
+        if distance > 0 and distance <= DangerDistance:
+            print("🔴 危険！後退します")
+            px.backward(Power)
             sleep(DangerTime)
+            px.stop()
+
+        # そうでなく、もし40cm以内なら、左に曲がる
+        elif distance > DangerDistance and distance <= SafeDistance:
+            print("🟡 注意！左に曲がります")
+            px.set_dir_servo_angle(TurnLeftAngle)
+            px.forward(Power)
+            sleep(CautionTime)
+            px.stop()
+            px.set_dir_servo_angle(0)
+
+        # それ以外（測定できないほど遠い、または40cmより遠い）なら、前進
+        else:
+            print("🟢 安全！前進します")
+            px.forward(Power)
+            sleep(1)
+            px.stop()
 
 finally:
     # 終了時に必ず停止
